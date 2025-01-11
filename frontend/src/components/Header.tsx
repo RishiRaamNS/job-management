@@ -8,7 +8,7 @@ import CreateJob from "./CreateJob";
 function Header() {
   return (
     <div
-      className="flex gap-x-10 my-8 w-fit border border-[#FCFCFC] mx-auto  py-6 rounded-[122px] px-6 font-semibold items-center"
+      className="flex gap-x-10 mt-4 mb-10 w-fit border border-[#FCFCFC] mx-auto  py-4 rounded-[122px] px-6 font-semibold items-center"
       style={{ boxShadow: "0 0 20px rgba(127, 127, 127, 0.15)" }}
     >
       <img

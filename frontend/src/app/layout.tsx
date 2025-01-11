@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
 import {
   ColorSchemeScript,
   mantineHtmlProps,
   MantineProvider,
   createTheme,
 } from "@mantine/core";
+import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,7 +34,7 @@ export default function RootLayout({
       </head>
       <body>
         <MantineProvider withGlobalClasses theme={theme}>
-          {children}
+          <Providers>{children}</Providers>
         </MantineProvider>
       </body>
     </html>
