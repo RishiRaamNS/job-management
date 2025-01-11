@@ -34,7 +34,10 @@ function CreateJob() {
   });
   const onSubmit: SubmitHandler<Job> = async (data) => {
     try {
-      const response = await axios.post(process.env.BACKEND_POST_URL!, data);
+      const response = await axios.post(
+        "https://jobs-hofi.onrender.com/api/jobs/create",
+        data
+      );
       console.log(response.data);
       reset();
       close();
