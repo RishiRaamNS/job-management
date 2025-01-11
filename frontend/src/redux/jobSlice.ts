@@ -10,7 +10,7 @@ interface JobState {
 
 // Async thunk to fetch jobs
 export const fetchJobs = createAsyncThunk<Job[]>("jobs/fetchJobs", async () => {
-  const response = await fetch("http://localhost:3001/api/jobs");
+  const response = await fetch(process.env.BACKEND_GET_URL!);
   const data = await response.json();
   return data; // Return the job data
 });

@@ -34,10 +34,7 @@ function CreateJob() {
   });
   const onSubmit: SubmitHandler<Job> = async (data) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3001/api/jobs/create",
-        data
-      );
+      const response = await axios.post(process.env.BACKEND_POST_URL!, data);
       console.log(response.data);
       reset();
       close();
