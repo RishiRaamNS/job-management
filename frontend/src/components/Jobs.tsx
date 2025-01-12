@@ -126,7 +126,7 @@ function Jobs() {
         ))}
       </Grid>
 
-      <Flex justify="center" mt={70}>
+      <Flex justify="center" mt={70} mb={70}>
         <Pagination
           value={currentPage}
           onChange={setCurrentPage}

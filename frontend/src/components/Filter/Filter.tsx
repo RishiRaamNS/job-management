@@ -131,7 +131,7 @@ function Filter() {
           onChange={(value) => setSelectedJobType(value || "")}
         />
       </Grid.Col>
-      <Grid.Col span={3} ml={20}>
+      <Grid.Col span={3} ml={{ lg: 20 }}>
         <Flex gap={40} mt={-10} mb={20}>
           <Text fw={600}>Salary Per Month</Text>
           <Text fw={600}>
