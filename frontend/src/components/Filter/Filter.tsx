@@ -87,13 +87,18 @@ function Filter() {
     <Grid grow mx={100}>
       <Grid.Col span={"content"} display="flex" className={classes.flex}>
         <img src="/search.svg" alt="search" width={20} height={20} />
-        <Input
+        <Autocomplete
           variant="unstyled"
           placeholder="Search By Job Title, Role"
           ml={10}
           w={200}
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          limit={8}
+          onChange={setSearchTerm}
+          data={jobTitles.concat(companyNames)}
+          comboboxProps={{
+            transitionProps: { transition: "pop", duration: 200 },
+          }}
         />
       </Grid.Col>
       <Grid.Col span={"content"} className={classes.flex}>
@@ -106,6 +111,10 @@ function Filter() {
           data={locations}
           value={location}
           onChange={setLocation}
+          limit={8}
+          comboboxProps={{
+            transitionProps: { transition: "pop", duration: 200 },
+          }}
         />
       </Grid.Col>
       <Grid.Col span={"content"} className={classes.flex}>

@@ -30,6 +30,8 @@ function CreateJob() {
     defaultValues: {
       salaryMin: 0,
       salaryMax: 0,
+      experienceMax: 0,
+      experienceMin: 0,
     },
   });
   const onSubmit: SubmitHandler<Job> = async (data) => {
@@ -65,6 +67,7 @@ function CreateJob() {
           <Grid grow>
             <Grid.Col span={6}>
               <TextInput
+                withAsterisk
                 placeholder="Full Stack Developer"
                 label="Enter Job Title"
                 {...register("jobTitle", { required: "Job title is required" })}
@@ -72,6 +75,7 @@ function CreateJob() {
             </Grid.Col>
             <Grid.Col span={6}>
               <TextInput
+                withAsterisk
                 placeholder="Amazon, Swiggy"
                 label="Company Name"
                 {...register("companyName", {
@@ -81,6 +85,7 @@ function CreateJob() {
             </Grid.Col>
             <Grid.Col span={6}>
               <TextInput
+                withAsterisk
                 placeholder="Choose Preferred Location"
                 label="Location"
                 {...register("location", { required: "Location is required" })}
@@ -95,6 +100,7 @@ function CreateJob() {
                   <Select
                     {...field}
                     searchable
+                    withAsterisk
                     data={["Internship", "Full-time", "Part-time", "Contract"]}
                     placeholder="Job Type"
                     label="Job Type"
@@ -148,8 +154,9 @@ function CreateJob() {
                 render={({ field }) => (
                   <DateInput
                     {...field}
-                    placeholder="Application Deadline"
-                    label="Date input"
+                    placeholder=" "
+                    rightSection={<img src="/calendar.svg" alt="calendar" />}
+                    label="Application Deadline"
                     popoverProps={{ withinPortal: true }}
                     error={
                       errors.applicationDeadline &&
