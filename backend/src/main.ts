@@ -7,7 +7,7 @@ async function bootstrap() {
 
   // Enable CORS - needed because frontend runs on different port
   app.enableCors({
-    origin: ['https://jobs-eta-five.vercel.app', 'http://localhost:3000'], // Your Next.js frontend URL
+    origin: ['https://jobdeck.vercel.app', 'http://localhost:3000'], // Your Next.js frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
   });
