@@ -84,7 +84,7 @@ function Filter() {
     return <div>Error: {error}</div>;
   }
   return (
-    <Grid grow mx={100}>
+    <Grid grow mx={{ lg: 100 }}>
       <Grid.Col span={"content"} display="flex" className={classes.flex}>
         <img src="/search.svg" alt="search" width={20} height={20} />
         <Autocomplete
