@@ -84,76 +84,89 @@ function Filter() {
     return <div>Error: {error}</div>;
   }
   return (
-    <Grid grow mx={{ sm: 20, lg: 100 }}>
-      <Grid.Col span={"content"} display="flex" className={classes.flex}>
-        <img src="/search.svg" alt="search" width={20} height={20} />
-        <Autocomplete
-          variant="unstyled"
-          placeholder="Search By Job Title, Role"
-          ml={10}
-          w={200}
-          value={searchTerm}
-          limit={8}
-          onChange={setSearchTerm}
-          data={jobTitles.concat(companyNames)}
-          comboboxProps={{
-            transitionProps: { transition: "pop", duration: 200 },
-          }}
-        />
-      </Grid.Col>
-      <Grid.Col span={"content"} className={classes.flex}>
-        <img src="/location.svg" alt="location" />
-        <Autocomplete
-          variant="unstyled"
-          placeholder="Preferred Location"
-          ml={10}
-          w={200}
-          data={locations}
-          value={location}
-          onChange={setLocation}
-          limit={8}
-          comboboxProps={{
-            transitionProps: { transition: "pop", duration: 200 },
-          }}
-        />
-      </Grid.Col>
-      <Grid.Col span={"content"} className={classes.flex}>
-        <img src="/jobtype.svg" alt="Job Type" />
-        <Select
-          searchable
-          data={["Internship", "Full-time", "Part-time", "Contract"]}
-          placeholder="Job Type"
-          styles={{
-            input: { border: "none" }, // Remove the border
-          }}
-          clearable
-          value={selectedJobType}
-          onChange={(value) => setSelectedJobType(value || "")}
-        />
-      </Grid.Col>
-      <Grid.Col span={3} ml={{ lg: 20 }}>
-        <Flex gap={40} mt={-10} mb={20}>
-          <Text fw={600}>Salary Per Month</Text>
-          <Text fw={600}>
-            ₹{startSalary}k - ₹{endSalary}k
-          </Text>
+    <Grid p="md">
+      {/* Search Input - Full width on mobile, custom width on larger screens */}
+      <Grid.Col span={{ base: 12, sm: 6, lg: 4 }}>
+        <Flex align="center" gap="sm">
+          <img src="/search.svg" alt="search" className="w-5 h-5" />
+          <Autocomplete
+            variant="unstyled"
+            placeholder="Search By Job Title, Role"
+            value={searchTerm}
+            limit={8}
+            onChange={setSearchTerm}
+            data={jobTitles.concat(companyNames)}
+            className="w-full"
+            comboboxProps={{
+              transitionProps: { transition: "pop", duration: 200 },
+            }}
+          />
         </Flex>
-        <RangeSlider
-          mt={{ sm: 30 }}
-          min={10}
-          max={200}
-          step={10}
-          w={300}
-          color="black"
-          size={"3"}
-          thumbSize={13}
-          minRange={20}
-          label={null}
-          onChange={(values) => {
-            setStartSalary(values[0]);
-            setEndSalary(values[1]);
-          }}
-        />
+      </Grid.Col>
+
+      {/* Location Input */}
+      <Grid.Col span={{ base: 12, sm: 6, lg: 3 }}>
+        <Flex align="center" gap="sm">
+          <img src="/location.svg" alt="location" className="w-5 h-5" />
+          <Autocomplete
+            variant="unstyled"
+            placeholder="Preferred Location"
+            data={locations}
+            value={location}
+            onChange={setLocation}
+            limit={8}
+            className="w-full"
+            comboboxProps={{
+              transitionProps: { transition: "pop", duration: 200 },
+            }}
+          />
+        </Flex>
+      </Grid.Col>
+
+      {/* Job Type Select */}
+      <Grid.Col span={{ base: 12, sm: 6, lg: 2 }}>
+        <Flex align="center" gap="sm">
+          <img src="/jobtype.svg" alt="Job Type" className="w-5 h-5" />
+          <Select
+            searchable
+            data={["Internship", "Full-time", "Part-time", "Contract"]}
+            placeholder="Job Type"
+            className="w-full"
+            styles={{
+              input: { border: "none" },
+            }}
+            clearable
+            value={selectedJobType}
+            onChange={(value) => setSelectedJobType(value || "")}
+          />
+        </Flex>
+      </Grid.Col>
+
+      {/* Salary Range */}
+      <Grid.Col span={{ base: 12, sm: 6, lg: 3 }}>
+        <Flex direction="column" gap="md">
+          <Flex justify="space-between" align="center">
+            <Text fw={600}>Salary Per Month</Text>
+            <Text fw={600}>
+              ₹{startSalary}k - ₹{endSalary}k
+            </Text>
+          </Flex>
+          <RangeSlider
+            min={10}
+            max={200}
+            step={10}
+            w="100%"
+            color="black"
+            size="3"
+            thumbSize={13}
+            minRange={20}
+            label={null}
+            onChange={(values) => {
+              setStartSalary(values[0]);
+              setEndSalary(values[1]);
+            }}
+          />
+        </Flex>
       </Grid.Col>
     </Grid>
   );
