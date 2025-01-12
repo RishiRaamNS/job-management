@@ -1,16 +1,16 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { JobsService } from './jobs.service';
 
-@Controller('jobs') // Base route: /jobs
+@Controller('jobs')
 export class JobsController {
   constructor(private readonly jobService: JobsService) {}
-  @Get() // GET request to /jobs
+  @Get()
   async getJobs() {
-    return this.jobService.getJobs(); // Calls the service to get all jobs
+    return this.jobService.getJobs();
   }
-  @Post('create') // POST request to /jobs/create
+  @Post('create')
   createJob(@Body() jobData: any) {
-    console.log('Received Job Data:', jobData); // Logs the data sent from frontend
-    return this.jobService.createJob(jobData); // Passes the data to the service
+    console.log('Received Job Data:', jobData);
+    return this.jobService.createJob(jobData);
   }
 }

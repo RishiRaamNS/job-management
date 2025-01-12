@@ -2,14 +2,12 @@
 import React, { useState, useMemo, useEffect } from "react";
 import {
   Grid,
-  Input,
   RangeSlider,
   Text,
   Flex,
   Select,
   Autocomplete,
 } from "@mantine/core";
-import classes from "./Filter.module.css";
 import { Job } from "@/types/job";
 import { RootState } from "@/redux/store";
 import { useSelector, useDispatch } from "react-redux";
@@ -52,11 +50,11 @@ function Filter() {
 
       const matchesLocation = location
         ? job.location.toLowerCase().includes(location.toLowerCase())
-        : true; // Only filter location if it's provided
+        : true;
 
       const matchesJobType = selectedJobType
         ? job.jobType === selectedJobType
-        : true; // Only filter jobType if selectedJobType is provided
+        : true;
 
       const matchesSalary =
         job.salaryMax >= startSalary * 1000 &&
@@ -85,7 +83,7 @@ function Filter() {
   }
   return (
     <Grid p="md">
-      {/* Search Input - Full width on mobile, custom width on larger screens */}
+
       <Grid.Col span={{ base: 12, sm: 6, lg: 4 }}>
         <Flex align="center" gap="sm">
           <img src="/search.svg" alt="search" className="w-5 h-5" />

@@ -1,4 +1,4 @@
-import Filter from "@/components/Filter/Filter";
+import Filter from "@/components/Filter";
 import Header from "@/components/Header";
 import Jobs from "@/components/Jobs";
 

@@ -9,7 +9,7 @@ export class JobsService {
     const supabase = this.supabaseService.getClient();
     const { data, error } = await supabase.from('jobs').insert([jobData]);
     if (error) {
-      console.error('Supabase error:', error); // Log any errors
+      console.error('Supabase error:', error);
       throw new Error(error.message);
     }
     return data;
@@ -18,7 +18,7 @@ export class JobsService {
     const supabase = this.supabaseService.getClient();
     const { data, error } = await supabase.from('jobs').select();
     if (error) {
-      console.error('Supabase error:', error); // Log any errors
+      console.error('Supabase error:', error); 
       throw new Error(error.message);
     }
     return data;

@@ -15,7 +15,7 @@ import React from "react";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { DateInput } from "@mantine/dates";
-import axios from "axios"; // Import axios to send HTTP requests
+import axios from "axios";
 import { Job } from "@/types/job";
 
 function CreateJob() {
@@ -59,7 +59,7 @@ function CreateJob() {
         styles={{
           title: {
             fontWeight: "600",
-            margin: "0 auto", // Set font weight
+            margin: "0 auto", 
           },
         }}
       >

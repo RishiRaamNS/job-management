@@ -29,10 +29,10 @@ function Jobs() {
     minSalary: number,
     maxSalary: number
   ): string => {
-    const yearlyMin = minSalary * 12; // Convert to yearly
-    const yearlyMax = maxSalary * 12; // Convert to yearly
-    const avgYearly = (yearlyMin + yearlyMax) / 2; // Average yearly salary
-    const avgLPA = avgYearly / 100000; // Convert to Lakhs
+    const yearlyMin = minSalary * 12;
+    const yearlyMax = maxSalary * 12;
+    const avgYearly = (yearlyMin + yearlyMax) / 2;
+    const avgLPA = avgYearly / 100000; 
     return avgLPA % 1 === 0 ? `${avgLPA} LPA` : `${avgLPA.toFixed(1)} LPA`;
   };
 

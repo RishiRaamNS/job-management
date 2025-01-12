@@ -1,28 +1,24 @@
 import { Job } from "@/types/job";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// Define the state type
 interface JobState {
   data: Job[];
   loading: boolean;
   error: string | null;
 }
 
-// Async thunk to fetch jobs
 export const fetchJobs = createAsyncThunk<Job[]>("jobs/fetchJobs", async () => {
   const response = await fetch("https://jobs-hofi.onrender.com/api/jobs");
   const data = await response.json();
-  return data; // Return the job data
+  return data; 
 });
 
-// Define the initial state
 const initialState: JobState = {
   data: [],
   loading: false,
   error: null,
 };
 
-// Create the slice
 const jobSlice = createSlice({
   name: "jobs",
   initialState,
