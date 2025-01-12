@@ -73,7 +73,7 @@ function Jobs() {
   console.log(data);
   return (
     <>
-      <Grid mt={50} pl={45}>
+      <Grid mt={50} pl={{ lg: 45 }} justify="center" columns={4}>
         {currentJobs.map((job, index) => (
           <Grid.Col
             key={index}

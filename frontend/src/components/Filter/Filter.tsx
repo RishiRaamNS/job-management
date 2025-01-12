@@ -139,13 +139,14 @@ function Filter() {
           </Text>
         </Flex>
         <RangeSlider
+          mt={{ sm: 30 }}
           min={10}
           max={200}
           step={10}
           w={300}
           color="black"
-          size={"xs"}
-          thumbSize={15}
+          size={"3"}
+          thumbSize={13}
           minRange={20}
           label={null}
           onChange={(values) => {
