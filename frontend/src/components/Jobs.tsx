@@ -86,7 +86,7 @@ function Jobs() {
             }}
             className="drop-shadow-[0 0 14px #D3D3D3 0.15] rounded-[12px]"
           >
-            <div className="relative p-4 h-[74px] w-[74px] rounded-[13px] bg-gradient-to-b from-[#FEFEFD] to-[#F1F1F1] mb-4">
+            <div className="relative p-4 h-[74px] w-[74px] rounded-[13px] bg-gradient-to-b from-[#FEFEFD] to-[#F1F1F1] mb-4 grid place-items-center">
               <img
                 src={`https://img.logo.dev/${job.companyName}.com?token=pk_JxMj4KHhSEedhL9_0LOJIw&format=png&retina=true`}
                 alt="logo"
