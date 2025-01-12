@@ -126,15 +126,15 @@ function Jobs() {
         ))}
       </Grid>
 
-      <Pagination
-        value={currentPage}
-        onChange={setCurrentPage}
-        total={totalPages}
-        mt={70}
-        ml={"45%"}
-        size="md"
-        color="blue"
-      />
+      <Flex justify="center" mt={70}>
+        <Pagination
+          value={currentPage}
+          onChange={setCurrentPage}
+          total={totalPages}
+          size="md"
+          color="blue"
+        />
+      </Flex>
     </>
   );
 }
