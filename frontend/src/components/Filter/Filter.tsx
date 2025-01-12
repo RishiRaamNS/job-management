@@ -1,6 +1,14 @@
 "use client";
 import React, { useState, useMemo, useEffect } from "react";
-import { Grid, Input, RangeSlider, Text, Flex, Select } from "@mantine/core";
+import {
+  Grid,
+  Input,
+  RangeSlider,
+  Text,
+  Flex,
+  Select,
+  Autocomplete,
+} from "@mantine/core";
 import classes from "./Filter.module.css";
 import { Job } from "@/types/job";
 import { RootState } from "@/redux/store";
@@ -13,12 +21,28 @@ function Filter() {
   const [selectedJobType, setSelectedJobType] = useState("");
   const [startSalary, setStartSalary] = useState(0);
   const [endSalary, setEndSalary] = useState(200);
-
+  const [locations, setLocations] = useState<string[]>([]);
+  const [companyNames, setCompanyNames] = useState<string[]>([]);
+  const [jobTitles, setJobTitles] = useState<string[]>([]);
   const dispatch = useDispatch();
 
   const { data, loading, error } = useSelector(
     (state: RootState) => state.jobs
   ) as { data: Job[]; loading: boolean; error: string };
+
+  useEffect(() => {
+    if (data) {
+      const uniqueLocations = [...new Set(data.map((job) => job.location))];
+      const uniqueCompanyNames = [
+        ...new Set(data.map((job) => job.companyName)),
+      ];
+      const uniqueJobTitles = [...new Set(data.map((job) => job.jobTitle))];
+
+      setLocations(uniqueLocations);
+      setCompanyNames(uniqueCompanyNames);
+      setJobTitles(uniqueJobTitles);
+    }
+  }, [data]);
 
   const filteredData = useMemo(() => {
     return data.filter((job) => {
@@ -74,13 +98,14 @@ function Filter() {
       </Grid.Col>
       <Grid.Col span={"content"} className={classes.flex}>
         <img src="/location.svg" alt="location" />
-        <Input
+        <Autocomplete
           variant="unstyled"
           placeholder="Preferred Location"
           ml={10}
           w={200}
+          data={locations}
           value={location}
-          onChange={(e) => setLocation(e.target.value)}
+          onChange={setLocation}
         />
       </Grid.Col>
       <Grid.Col span={"content"} className={classes.flex}>
